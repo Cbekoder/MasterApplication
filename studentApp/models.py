@@ -18,10 +18,9 @@ class Student(CoreModel):
     jins = models.CharField(max_length=10, choices=JINS)
     telefon_shaxsiy = models.CharField(max_length=13)
     telefon_qoshimcha = models.CharField(max_length=13, blank=True, null=True)
-    guruh = models.CharField(max_length=10)
-    tuman = models.ForeignKey(District, on_delete=models.SET_NULL, null=True)
-    manzil = models.CharField(max_length=255)
-    talim_turi = models.CharField(max_length=255, choices=TALIM_TURI)
+    region = models.ForeignKey(District, on_delete=models.SET_NULL, null=True)
+    address = models.CharField(max_length=255)
+    education_type = models.CharField(max_length=255, choices=TALIM_TURI)
     class Meta:
         verbose_name = 'Talaba'
         verbose_name_plural = 'Talabalar'
