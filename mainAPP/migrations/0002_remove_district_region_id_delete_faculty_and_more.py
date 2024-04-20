@@ -4,23 +4,16 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('mainAPP', '0001_initial'),
         ('studentApp', '0002_delete_student'),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='district',
-            name='region_id',
-        ),
         migrations.DeleteModel(
             name='Faculty',
         ),
-        migrations.DeleteModel(
-            name='District',
-        ),
+
         migrations.DeleteModel(
             name='Region',
         ),
