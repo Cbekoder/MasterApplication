@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainAPP.apps.MainappConfig',
     "userApp.apps.UserappConfig",
-    "studentApp.apps.StudentappConfig"
+    "studentApp.apps.StudentappConfig",
+    "examination",
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = "userApp.User"

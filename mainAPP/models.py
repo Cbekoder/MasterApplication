@@ -10,6 +10,13 @@ class CoreModel(models.Model):
 class Country(CoreModel):
     name = models.CharField(max_length=35)
 
+    class Meta:
+        verbose_name = 'Country'
+        verbose_name_plural = 'Countries'
+
+    def __str__(self):
+        return self.name
+
 class Region(CoreModel):
     name = models.CharField(max_length=255)
 
