@@ -16,6 +16,8 @@ class WrittenExam(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
     question_file = models.FileField(upload_to='Exam_questions/')
 
+    def __str__(self):
+        return self.subject
 class Exam(CoreModel):
     exam_detail = models.ForeignKey(WrittenExam, on_delete=models.SET_NULL, null=True)
     applicant = models.ForeignKey(Applicant, on_delete=models.SET_NULL, null=True)

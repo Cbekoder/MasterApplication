@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from .models import *
+from django.views import View
 
-# Create your views here.
+
+
+class Exam(View):
+    def get(self,request,pk):
+        pass

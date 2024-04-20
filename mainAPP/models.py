@@ -64,7 +64,7 @@ class  Major(CoreModel):
 
     def __str__(self):
         return self.name
-    
+
 class Subject(CoreModel):
     name = models.CharField(max_length=50)
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True)
@@ -83,8 +83,8 @@ class SubjectTeacher(CoreModel):
 
     def __str__(self):
         return f'{self.subject} - {self.teacher}'
-    
-# class 
+
+# class
 
 
 # class Exam(CoreModel):
@@ -103,4 +103,4 @@ class SubjectTeacher(CoreModel):
 
 class InterviewTeacher(CoreModel):
     ...
-    
+
