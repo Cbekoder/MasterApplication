@@ -13,6 +13,8 @@ class WrittenExam(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
     question_file = models.FileField()
 
+    def __str__(self):
+        return self.subject
 class Exam(CoreModel):
     
     applicant = models.ForeignKey(Applicant, on_delete=models.SET_NULL, null=True)
@@ -23,3 +25,10 @@ class Exam(CoreModel):
         (2,'In progress')
     ))
     teacher_response = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.applicant
+
+
+
+
