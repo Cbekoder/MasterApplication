@@ -33,4 +33,11 @@ class Applicant(CoreModel):
 class Document(CoreModel):
     user = models.ForeignKey('Applicant', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
+<<<<<<< HEAD
     file = models.FileField()
+=======
+    file = models.FileField()
+
+
+
+>>>>>>> 8ee6f953caf0930deb30e88d38e6ace0e9b42a67

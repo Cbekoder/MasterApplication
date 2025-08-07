@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registratsiya</title>
+    <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+input[type="text"],
+input[type="tel"],
+textarea,
+select,
+input[type="number"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="#666" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: 98%;
+    background-position-y: 50%;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    outline: none;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #45a049;
+}
+
+    </style>
+
+    
+</head>
+<body>
+    <div class="container">
+        <h2>Apply for Master's</h2>
+        <form action="submit.php" method="POST">
+            <div class="form-group">
+                <label for="ism">Ism:</label>
+                <input type="text" id="ism" name="ism" required>
+            </div>
+            <div class="form-group">
+                <label for="familiya">Familiya:</label>
+                <input type="text" id="familiya" name="familiya" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="country" name="country" required>
+                    <option value="Uzbekistan">Uzbekistan</option>
+                    <option value="Kyrgyzstan">Kyrgyzstan</option>
+                    <option value="Turkey">Turkey</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="region">Region:</label>
+                <input type="text" id="region" name="region" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Adress:</label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="tel">Telefon:</label>
+                <input type="tel" id="tel" name="tel" placeholder="Telefon raqamni kiriting..." required>
+            </div>
+            <div class="form-group">
+                <label for="passport_ser">Passport seriya:</label>
+                <input type="text" id="passport_ser" name="passport_ser" required>
+            </div>
+            <div class="form-group">
+                <label for="passport_num">Passport raqami:</label>
+                <input type="number" id="passport_num" name="passport_num" required>
+            </div>
+            <div class="form-group">
+                <label for="diploma_num">Diplom raqami:</label>
+                <input type="number" id="diploma_num" name="diploma_num" required>
+            </div>
+            <div class="form-group">
+                <label for="certificate_num">Sertifikat raqami:</label>
+                <input type="number" id="certificate_num" name="certificate_num" required>
+            </div>
+            <div class="form-group">
+                <label for="file">Fayl yuklash:</label>
+                <input type="file" id="file" name="file" accept=".pdf, .doc, .docx" required>
+            </div>
+            <button type="submit" href="{url 'apply_for_masters'}">Yuborish</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('country').addEventListener('change', function () {
+            var country = this.value;
+            var telInput = document.getElementById('tel');
+            if (country === 'Uzbekistan') {
+                telInput.value = '+998';
+            } else if (country === 'Kyrgyzstan') {
+                telInput.value = '+996';
+            } else if (country === 'Turkey') {
+                telInput.value = '+90';
+            }
+        });
+    </script>
+    
+</body>
+
+
+</html>

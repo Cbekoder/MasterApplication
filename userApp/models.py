@@ -4,7 +4,11 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     ROLES = (
         ('superadmin', 'superadmin'),
+<<<<<<< HEAD
         ('Dean', 'Dean'),
+=======
+        ('mudir', 'mudir'),
+>>>>>>> 8ee6f953caf0930deb30e88d38e6ace0e9b42a67
         ('teacher', 'teacher'),
         ('applicant', 'applicant'),
     )
@@ -17,4 +21,7 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"{self.username}: {self.role}"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8ee6f953caf0930deb30e88d38e6ace0e9b42a67

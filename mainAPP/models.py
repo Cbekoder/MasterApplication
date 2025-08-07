@@ -1,5 +1,9 @@
 from django.db import models
+<<<<<<< HEAD
 from django.contrib.auth.models import User
+=======
+from userApp.models import User
+>>>>>>> 8ee6f953caf0930deb30e88d38e6ace0e9b42a67
 
 class CoreModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -7,6 +11,7 @@ class CoreModel(models.Model):
 
     class Meta:
         abstract = True
+<<<<<<< HEAD
 
 
 class Country(CoreModel):
@@ -15,28 +20,24 @@ class Country(CoreModel):
 class Region(CoreModel):
     name = models.CharField(max_length=255)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
+=======
+class Country(CoreModel):
+    name = models.CharField(max_length=35)
+>>>>>>> 8ee6f953caf0930deb30e88d38e6ace0e9b42a67
 
     class Meta:
-        verbose_name = 'Viloyat'
-        verbose_name_plural = 'Viloyatlar'
+        verbose_name = 'Country'
+        verbose_name_plural = 'Countries'
 
     def __str__(self):
         return self.name
 
-
-class District(CoreModel):
-    TYPE = (
-        ('city', 'city'),
-        ('district', 'district'),
-    )
-
+class Region(CoreModel):
     name = models.CharField(max_length=255)
-    type = models.CharField(max_length=20, choices=TYPE)
-    region_id = models.ForeignKey(Region, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name = 'District'
-        verbose_name_plural = 'Districts'
+        verbose_name = 'Region'
+        verbose_name_plural = 'Regions'
 
     def __str__(self):
         return self.name
@@ -44,6 +45,8 @@ class District(CoreModel):
 
 class Faculty(CoreModel):
     name = models.CharField(max_length=255)
+    dean = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
 
     class Meta:
         verbose_name = 'Faculty'
@@ -64,6 +67,10 @@ class Department(CoreModel):
     def __str__(self):
         return self.name
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8ee6f953caf0930deb30e88d38e6ace0e9b42a67
 class  Major(CoreModel):
     name = models.CharField(max_length=255)
     number = models.IntegerField()
@@ -93,4 +100,29 @@ class SubjectTeacher(CoreModel):
     teacher = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
+<<<<<<< HEAD
         return f'{self.subject} - {self.teacher}'
+=======
+        return f'{self.subject} - {self.teacher}'
+
+# class
+
+
+# class Exam(CoreModel):
+#     teacher = models.ForeignKey(SubjectTeacher, on_delete=models.SET_NULL, null=True)
+#     applicant = models.ForeignKey(Applicant, on_delete=models.SET_NULL, null=True)
+#     question_file = models.FileField()
+#     user_answer = models.FileField(null=True, blank=True)
+#     subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
+#     status = models.IntegerField(default=2, choices=(
+#         (0, 'Rejected'),
+#         (1,'Accepted'),
+#         (2,'In progress')
+#     ))
+#     teacher_response = models.CharField(max_length=255)
+
+
+class InterviewTeacher(CoreModel):
+    ...
+
+>>>>>>> 8ee6f953caf0930deb30e88d38e6ace0e9b42a67
