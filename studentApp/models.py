@@ -1,29 +1,36 @@
 from django.db import models
+from userApp.models import User
 from mainAPP.models import *
+from mainAPP.models import CoreModel
 
-class Student(CoreModel):
-    JINS = (
-        ('erkak', 'erkak'),
-        ('ayol', 'ayol')
+
+
+class Applicant(CoreModel):
+    GENDER = (
+        ('male', 'male'),
+        ('female', 'female')
     )
 
-    TALIM_TURI = (
-        ('kunduzgi', 'kunduzgi'),
-        ('sirtqi', 'sirtqi'),
-    )
-
-    ism = models.CharField(max_length=255)
-    familiya = models.CharField(max_length=255)
-    otasi = models.CharField(max_length=255, blank=True, null=True)
-    jins = models.CharField(max_length=10, choices=JINS)
-    telefon_shaxsiy = models.CharField(max_length=13)
-    telefon_qoshimcha = models.CharField(max_length=13, blank=True, null=True)
-    region = models.ForeignKey(District, on_delete=models.SET_NULL, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    gender = models.CharField(max_length=10, choices=GENDER)
+    tell = models.CharField(max_length=13)
+    region = models.ForeignKey(Region, on_delete=models.SET_NULL, null=True)
+    country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
     address = models.CharField(max_length=255)
-    education_type = models.CharField(max_length=255, choices=TALIM_TURI)
+    passport_ser = models.CharField(max_length=3)
+    passport_num = models.IntegerField()
+    diploma_num = models.CharField(max_length=15)
+    certificate_num = models.CharField(max_length=35, blank=True, null=True)
+    confirmed=models.BooleanField(default=False)
+
     class Meta:
-        verbose_name = 'Talaba'
-        verbose_name_plural = 'Talabalar'
+        verbose_name = 'Student'
+        verbose_name_plural = 'Students'
 
     def __str__(self):
-        return f"{self.ism} {self.familiya} {self.otasi}"
+        return f"{self.f_name} {self.l_name}"
+
+class Document(CoreModel):
+    user = models.ForeignKey('Applicant', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    file = models.FileField()
